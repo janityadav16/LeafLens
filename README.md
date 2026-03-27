@@ -47,14 +47,7 @@ source ./venv/bin/activate
 python manage.py runserver   
 
 ```
-## Video-Demonstration
-[Video.mp4](https://youtu.be/cbCVkRAjhgE)
 
-## Contributions
-1. [Ansh Joshi](https://github.com/ANSHJOSHI1811)
-2. [Bhavik Sharma](https://github.com/Bhavik-1025)
-3. [Bhavika Darpe](https://github.com/bhavika372)
-4. [Devendra Singh Pawar](https://github.com/devendrap08)
 
 
 
