@@ -1,0 +1,8 @@
+{
+  "name": "LeafLens",
+  "short_name": "LeafLens",
+  "theme_color": "#1D9E75",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

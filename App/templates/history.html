@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+Scan History
+{% endblock pagetitle %}
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h2 style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin: 0;">Scan history</h2>
+    <form method='POST' action='/history/clear' style='display:inline'>
+        <button type='submit' style='background:#FCEBEB;color:#791F1F;border:none;padding:7px 16px;border-radius:8px;font-size:13px;cursor:pointer'>Clear all</button>
+    </form>
+</div>
+
+<div class="tilt-card" style="background:#fff; border-radius:12px; border:0.5px solid rgba(0,0,0,0.08); overflow:hidden;">
+    <table class='history-table'>
+        <thead>
+            <tr>
+                <th>Disease Name</th>
+                <th>Confidence</th>
+                <th>Severity</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in scans %}
+            <tr>
+                <td>{{ s.disease_name.replace('___',' ').replace('_',' ') }}</td>
+                <td style='color:#1D9E75;font-weight:500'>{{ '%.1f'|format(s.confidence) }}%</td>
+                <td>
+                    {% if s.severity=='High' %}
+                    <span class='badge badge-high'>High</span>
+                    {% elif s.severity=='Medium' %}
+                    <span class='badge badge-mid'>Medium</span>
+                    {% else %}
+                    <span class='badge badge-low'>Low</span>
+                    {% endif %}
+                </td>
+                <td style='color:#888;font-size:12px'>{{ s.timestamp.strftime('%d %b %Y &middot; %H:%M') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan='4' style='text-align:center;color:#888;padding:32px'>No scans yet</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
